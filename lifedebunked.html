@@ -1,15 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Life Insurance Myths Debunked | Malik Bachlani</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <title>ILIfe Insurance Debunked | Malik Bachlani</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 flex items-center justify-center min-h-screen">
-  <div class="text-center">
-    <h1 class="text-4xl font-bold text-primary-600">Life Insurance Myths Debunked</h1>
-    <p class="mt-4 text-lg text-gray-700 dark:text-gray-300">Full article coming soon.</p>
-    <a href="index.html" class="mt-8 inline-block bg-primary-600 text-white px-6 py-2 rounded hover:bg-primary-700 transition">Back to Home</a>
-  </div>
+<body class="bg-gray-50 dark:bg-gray-900 flex items-center justify-center min-h-screen transition-all duration-300">
+    <div class="text-center">
+        <h1 class="text-4xl font-extrabold text-primary-600 dark:text-primary-400">Insurance</h1>
+        <p class="mt-4 text-lg text-gray-700 dark:text-gray-300">This page is coming soon.</p>
+        <a href="index.html" class="mt-8 inline-block bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded transition-all">
+            <i class="fas fa-arrow-left mr-2"></i>Back to Home
+        </a>
+    </div>
+    <script>
+        // Dark mode toggle (system preference)
+        if (localStorage.getItem('color-theme') === 'dark' || (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
 </body>
 </html>
