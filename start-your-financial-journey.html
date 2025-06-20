@@ -79,7 +79,11 @@
     <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div class="bg-gray-50 dark:bg-gray-700 py-8 px-6 rounded-lg shadow-lg">
             <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-6 text-center">Get Started Today</h3>
-            <form class="space-y-6">
+            <form class="space-y-6" action="https://formsubmit.co/malik.bachlani@gmail.com" method="POST">
+                <!-- Add hidden fields for subject and redirect -->
+                <input type="hidden" name="_subject" value="Start your financial journey">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_autoresponse" value="Thank you for reaching out! I will contact you soon.">
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
                     <div class="mt-1">
@@ -141,4 +145,8 @@
         .hero-gradient {
             background: linear-gradient(135deg, rgba(6, 82, 133, 0.9) 0%, rgba(14, 165, 233, 0.9) 100%), url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
-            background-position:
+            background-position: center;
+        }
+    </style>
+</body>
+</html>
