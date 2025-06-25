@@ -29,12 +29,7 @@
             }
         }
     </script>
-    <script>
-    window.onload = function() {
-        // Reset the form fields when the page loads
-        document.getElementById("form").reset();
-    };
-    </script>
+    
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 transition-all duration-300">
     <!-- Navigation -->
@@ -85,9 +80,15 @@
     <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div class="bg-gray-50 dark:bg-gray-700 py-8 px-6 rounded-lg shadow-lg">
             <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-6 text-center">Get Started Today</h3>
-
+              <script>
+                        window.onload = function() {
+                        // Reset the form fields when the page loads
+                        document.getElementById("form").reset();
+                        };
+                        </script>
+                        
             <form class="space-y-6" action="https://api.web3forms.com/submit" method="POST">
-
+                 
         
                 <!-- Add hidden fields for subject and redirect -->
                  <input type="hidden" name="access_key" value="59d76ed4-1662-4a6d-afa8-cd95e167efc2">
