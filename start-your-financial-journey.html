@@ -80,12 +80,7 @@
     <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div class="bg-gray-50 dark:bg-gray-700 py-8 px-6 rounded-lg shadow-lg">
             <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-6 text-center">Get Started Today</h3>
-              <!-- <script>
-                        window.onload = function() {
-                        // Reset the form fields when the page loads
-                        document.getElementById("form").reset();
-                        };
-                        </script> -->
+              
 
             <form class="space-y-6" action="https://api.web3forms.com/submit" method="POST">
                  
@@ -100,7 +95,7 @@
                 <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
                 <!-- <input type="hidden" name="_template" value="table">  -->
                  <!-- <input type="hidden" name="_autoresponse" value="Thank you for reaching out! I will contact you soon."> -->
-                <input type="hidden" name="redirect" value="thank-you.html" />
+                
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
                     <div class="mt-1">
@@ -129,8 +124,13 @@
                     <button type="submit" class="w-full bg-primary-600 hover:bg-primary-700 text-white px-4 py-3 border border-transparent rounded-md text-base font-medium transition-all">
                         Get Started
                     </button>
+                    <input type="button" onclick="newFunction()" value="Reset Form" />
                 </div>
             </form>
+            <script>
+                function newFunction() {
+                    document.getElementById("form").reset();
+                }
         </div>
     </div>
 
