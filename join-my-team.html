@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join My Team | Malik Bachlani</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(6, 82, 133, 0.9) 0%, rgba(14, 165, 233, 0.9) 100%), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 transition-all duration-300">
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="index.html" class="text-xl font-bold text-primary-600">Malik Bachlani</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-gradient text-white py-20">
+        <div class="max-w-3xl mx-auto text-center px-4">
+            <h1 class="text-4xl font-extrabold sm:text-5xl">Join My Team</h1>
+            <p class="mt-6 text-xl max-w-2xl mx-auto">
+                Build a rewarding career in financial services. Learn, grow, and help others achieve financial freedom with mentorship and support.
+            </p>
+        </div>
+    </div>
+
+    <!-- Info Section -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
+            <div class="p-8">
+                <h2 class="text-2xl font-bold text-primary-700 dark:text-primary-400 mb-4">Why Join My Team?</h2>
+                <ul class="list-disc ml-6 text-gray-700 dark:text-gray-300 space-y-3">
+                    <li><strong>Comprehensive Training:</strong> Get industry-leading education and mentorship to become a licensed financial professional.</li>
+                    <li><strong>Flexible Schedule:</strong> Build your business around your life with the freedom to set your own hours.</li>
+                    <li><strong>Make a Difference:</strong> Help families achieve financial security while building your own entrepreneurial business.</li>
+                    <li><strong>Unlimited Earning Potential:</strong> Your income is based on your effort and results, not a fixed salary.</li>
+                </ul>
+                <p class="mt-6 text-lg text-gray-600 dark:text-gray-300">
+                    If you are passionate about helping others, entrepreneurial, and committed to learning, let's connect!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Form Section -->
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <div class="bg-gray-50 dark:bg-gray-700 py-8 px-6 rounded-lg shadow-lg">
+            <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-6 text-center">Apply or Learn More</h3>
+            <form class="space-y-6" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+                <input type="hidden" name="subject" value="Join My Team Inquiry" />
+                <input type="hidden" name="from_name" value="My Website" />
+                <input type="hidden" name="redirect" value="thank-you.html" />
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+                    <div class="mt-1">
+                        <input type="text" name="name" id="name" required class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-600 dark:border-gray-600 dark:text-white">
+                    </div>
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+                    <div class="mt-1">
+                        <input type="email" name="email" id="email" required class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-600 dark:border-gray-600 dark:text-white">
+                    </div>
+                </div>
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Phone</label>
+                    <div class="mt-1">
+                        <input type="text" name="phone" id="phone" class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-600 dark:border-gray-600 dark:text-white">
+                    </div>
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
+                    <div class="mt-1">
+                        <textarea id="message" name="message" rows="4" class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-600 dark:border-gray-600 dark:text-white"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="w-full bg-primary-600 hover:bg-primary-700 text-white px-4 py-3 border border-transparent rounded-md text-base font-medium transition-all">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-base text-gray-400">
+                &copy; 2023 Malik Bachlani, Financial Advisor with World Financial Group. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle (system preference)
+        if (localStorage.getItem('color-theme') === 'dark' || (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</body>
+</html>
