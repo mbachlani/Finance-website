@@ -69,7 +69,7 @@
     <header class="bg-primary-700 text-white py-16">
         <div class="max-w-3xl mx-auto text-center px-4">
             <span class="text-primary-200 font-semibold uppercase tracking-wider">Insurance Insights</span>
-            <h1 class="mt-2 text-4xl font-extrabold sm:text-5xl">Life Insurance Myths Debunked: What Canadians Need to Know</h1>
+            <h1 class="mt-2 text-4xl font-extrabold sm:text-5xl text-primary-100 dark:text-primary-50">Life Insurance Myths Debunked: What Canadians Need to Know</h1>
             <div class="mt-4 flex items-center justify-center text-primary-100 text-sm gap-4">
                 <span><i class="fas fa-calendar-alt mr-2"></i>May 28, 2023</span>
                 <span><i class="fas fa-user mr-2"></i>Malik Bachlani</span>
@@ -155,3 +155,22 @@
         if (localStorage.getItem('color-theme') === 'dark' || (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        // Dark mode toggle (button)
+        const toggleDarkMode = document.getElementById('toggle-dark-mode');
+        if (toggleDarkMode) {
+            toggleDarkMode.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                // Save preference to local storage
+                if (document.documentElement.classList.contains('dark')) {
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    localStorage.setItem('color-theme', 'light');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
