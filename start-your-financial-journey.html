@@ -29,11 +29,28 @@
             }
         }
     </script>
-    
+
+    <style>
+        /* Ensure nav stays visually above all page content */
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 99999; /* very high so scrolling content stays under the menu */
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+        }
+
+        /* Explicitly keep main content at default stacking level */
+        .content-layer {
+            position: relative;
+            z-index: 0;
+        }
+    </style>
+
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 transition-all duration-300">
     <!-- Navigation -->
-    <nav class="bg-blue dark:bg-gray-800 shadow-md sticky top-0 z-50">
+    <nav class="site-nav bg-blue dark:bg-gray-800 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
@@ -48,97 +65,101 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <div class="hero-gradient text-white py-20">
-        <div class="max-w-3xl mx-auto text-center px-4">
-            <h1 class="text-4xl font-extrabold sm:text-5xl">Start Your Financial Journey</h1>
-            <p class="mt-6 text-xl max-w-2xl mx-auto">
-                Take control of your financial future with guidance from a licensed advisor. Discover how financial services like insurance, investments, and education planning can help you protect your loved ones and build lasting wealth.
-            </p>
-        </div>
-    </div>
-
-    <!-- Info Section -->
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
-            <div class="p-8">
-                <h2 class="text-2xl font-bold text-primary-700 dark:text-primary-400 mb-4">Why Start Your Financial Journey?</h2>
-                <ul class="list-disc ml-6 text-gray-700 dark:text-gray-300 space-y-3">
-                    <li><strong>Protect Your Family:</strong> Ensure your loved ones are financially secure with the right insurance coverage.</li>
-                    <li><strong>Grow Your Wealth:</strong> Make your money work for you through smart investment strategies tailored to your goals.</li>
-                    <li><strong>Plan for Milestones:</strong> Save for your children’s education, your retirement, or your first home with proven financial tools.</li>
-                    <li><strong>Peace of Mind:</strong> Work with a trusted advisor who puts your interests first and explains every step in plain language.</li>
-                </ul>
-                <p class="mt-6 text-lg text-gray-600 dark:text-gray-300">
-                    Whether you’re just starting out or looking to optimize your current plan, I’m here to help you every step of the way.
+    <!-- Wrap all page content so it stays under the sticky nav -->
+    <div class="content-layer">
+        <!-- Hero Section -->
+        <div class="hero-gradient text-white py-20">
+            <div class="max-w-3xl mx-auto text-center px-4">
+                <h1 class="text-4xl font-extrabold sm:text-5xl">Start Your Financial Journey</h1>
+                <p class="mt-6 text-xl max-w-2xl mx-auto">
+                    Take control of your financial future with guidance from a licensed advisor. Discover how financial services like insurance, investments, and education planning can help you protect your loved ones and build lasting wealth.
                 </p>
             </div>
         </div>
-    </div>
 
-    <!-- Contact Form Section -->
-    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div class="bg-gray-50 dark:bg-gray-700 py-8 px-6 rounded-lg shadow-lg">
-            <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-6 text-center">Get Started Today</h3>
-              
-
-            <form id="start" class="space-y-6" action="https://api.web3forms.com/submit" method="POST">
-                 
-        
-                <!-- Add hidden fields for subject and redirect -->
-                 <input type="hidden" name="access_key" value="59d76ed4-1662-4a6d-afa8-cd95e167efc2">
-                 <input type="hidden" name="subject" value="Start your financial journey" />
-                 <input type="hidden" name="from_name" value="My Website" />
-                 
-                 <!-- hahjhja -->
-                 <!-- Honeypot Spam Protection -->
-                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-                <!-- <input type="hidden" name="_template" value="table">  -->
-                 <!-- <input type="hidden" name="_autoresponse" value="Thank you for reaching out! I will contact you soon."> -->
-                
-                <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
-                    <div class="mt-1">
-                        <input type="text" name="name" id="name" required class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-600 dark:border-gray-600 dark:text-white">
-                    </div>
+        <!-- Info Section -->
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
+                <div class="p-8">
+                    <h2 class="text-2xl font-bold text-primary-700 dark:text-primary-400 mb-4">Why Start Your Financial Journey?</h2>
+                    <ul class="list-disc ml-6 text-gray-700 dark:text-gray-300 space-y-3">
+                        <li><strong>Protect Your Family:</strong> Ensure your loved ones are financially secure with the right insurance coverage.</li>
+                        <li><strong>Grow Your Wealth:</strong> Make your money work for you through smart investment strategies tailored to your goals.</li>
+                        <li><strong>Plan for Milestones:</strong> Save for your children’s education, your retirement, or your first home with proven financial tools.</li>
+                        <li><strong>Peace of Mind:</strong> Work with a trusted advisor who puts your interests first and explains every step in plain language.</li>
+                    </ul>
+                    <p class="mt-6 text-lg text-gray-600 dark:text-gray-300">
+                        Whether you’re just starting out or looking to optimize your current plan, I’m here to help you every step of the way.
+                    </p>
                 </div>
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
-                    <div class="mt-1">
-                        <input type="email" name="email" id="email" required class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-600 dark:border-gray-600 dark:text-white">
-                    </div>
-                </div>
-                <div>
-                    <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Phone</label>
-                    <div class="mt-1">
-                        <input type="text" name="phone" id="phone" class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-600 dark:border-gray-600 dark:text-white">
-                    </div>
-                </div>
-                <div>
-                    <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
-                    <div class="mt-1">
-                        <textarea id="message" name="message" rows="4" class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-600 dark:border-gray-600 dark:text-white"></textarea>
-                    </div>
-                </div>
-                <div>
-                    <button type="submit" class="w-full bg-primary-600 hover:bg-primary-700 text-white px-4 py-3 border border-transparent rounded-md text-base font-medium transition-all">
-                        Get Started
-                    </button>
-                    
-                </div>
-            </form>
-            
+            </div>
         </div>
-    </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white">
-        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-base text-gray-400">
-                &copy; 2025 Malik Bachlani, Financial Advisor with World Financial Group. All rights reserved.
-            </p>
+        <!-- Contact Form Section -->
+        <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+            <div class="bg-gray-50 dark:bg-gray-700 py-8 px-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-6 text-center">Get Started Today</h3>
+
+
+
+                <form id="start" class="space-y-6" action="https://api.web3forms.com/submit" method="POST">
+
+
+                    <!-- Add hidden fields for subject and redirect -->
+                     <input type="hidden" name="access_key" value="59d76ed4-1662-4a6d-afa8-cd95e167efc2">
+                     <input type="hidden" name="subject" value="Start your financial journey" />
+                     <input type="hidden" name="from_name" value="My Website" />
+
+                     <!-- hahjhja -->
+                     <!-- Honeypot Spam Protection -->
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                    <!-- <input type="hidden" name="_template" value="table">  -->
+                     <!-- <input type="hidden" name="_autoresponse" value="Thank you for reaching out! I will contact you soon."> -->
+
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+                        <div class="mt-1">
+                            <input type="text" name="name" id="name" required class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-600 dark:border-gray-600 dark:text-white">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+                        <div class="mt-1">
+                            <input type="email" name="email" id="email" required class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-600 dark:border-gray-600 dark:text-white">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Phone</label>
+                        <div class="mt-1">
+                            <input type="text" name="phone" id="phone" class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-600 dark:border-gray-600 dark:text-white">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
+                        <div class="mt-1">
+                            <textarea id="message" name="message" rows="4" class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-600 dark:border-gray-600 dark:text-white"></textarea>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full bg-primary-600 hover:bg-primary-700 text-white px-4 py-3 border border-transparent rounded-md text-base font-medium transition-all">
+                            Get Started
+                        </button>
+
+                    </div>
+                </form>
+
+            </div>
         </div>
-    </footer>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white">
+            <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-base text-gray-400">
+                    &copy; 2025 Malik Bachlani, Financial Advisor with World Financial Group. All rights reserved.
+                </p>
+            </div>
+        </footer>
+    </div>
 
     <script>
         // Dark mode toggle (system preference)
@@ -153,10 +174,10 @@
             e.preventDefault();
             alert('Thank you for reaching out! I will contact you soon.');
             this.reset();
-        } 
+        }
     ); */
     </script>
-    
+
     <style>
         .hero-gradient {
             background: linear-gradient(135deg, rgba(6, 82, 133, 0.9) 0%, rgba(14, 165, 233, 0.9) 100%), url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
