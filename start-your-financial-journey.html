@@ -31,19 +31,10 @@
     </script>
 
     <style>
-        /* Ensure nav stays visually above all page content */
-        .site-nav {
-            position: sticky;
-            top: 0;
-            z-index: 99999; /* very high so scrolling content stays under the menu */
-            -webkit-backdrop-filter: blur(4px);
-            backdrop-filter: blur(4px);
-        }
-
-        /* Explicitly keep main content at default stacking level */
-        .content-layer {
-            position: relative;
-            z-index: 0;
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(6, 82, 133, 0.9) 0%, rgba(14, 165, 233, 0.9) 100%), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
         }
     </style>
 
