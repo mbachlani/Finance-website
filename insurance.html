@@ -5,6 +5,7 @@
     <title>Insurance Protection | Malik Bachlani</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@preline/preline@2.0.0/dist/preline.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -29,115 +30,207 @@
             }
         }
     </script>
+
+    <style>
+        /* Keep nav on top and page content below */
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(4px);
+        }
+        .content-layer { position: relative; z-index: 0; }
+
+        /* small theme helpers used on index.html */
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(6,82,133,0.9) 0%, rgba(14,165,233,0.9) 100%);
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 transition-all duration-300">
-    <main class="max-w-3xl mx-auto px-4 py-16">
-        <h1 class="text-4xl font-extrabold text-primary-600 dark:text-primary-400 text-center">Insurance Protection</h1>
-        <p class="mt-4 text-lg text-gray-700 dark:text-gray-300 text-center">
-            Practical protection and financial education to help you and your family stay secure through life’s changes.
-        </p>
+    <!-- Navigation (copied / adapted from index.html) -->
+    <nav class="site-nav bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="index.html" class="text-xl font-bold text-primary-600">Malik Bachlani</a>
 
-        <section class="mt-8 space-y-6">
-            <div>
-                <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Life Insurance</h2>
-                <p class="mt-2 text-gray-600 dark:text-gray-300">
-                    Provides a financial safety net for your loved ones in the event of death. Options include term and permanent policies tailored to your family's needs and budget.
-                </p>
-            </div>
-
-            <div>
-                <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Critical Illness Insurance</h2>
-                <p class="mt-2 text-gray-600 dark:text-gray-300">
-                    One-time lump-sum benefit if you're diagnosed with a covered critical illness. Designed to cover medical expenses, mortgage or living costs while you recover.
-                </p>
-            </div>
-
-            <div>
-                <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Disability Coverage</h2>
-                <p class="mt-2 text-gray-600 dark:text-gray-300">
-                    Income protection if you become unable to work due to injury or illness. Keeps bills paid and preserves long-term financial plans.
-                </p>
-            </div>
-
-            <div>
-                <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Health & Dental Plans</h2>
-                <p class="mt-2 text-gray-600 dark:text-gray-300">
-                    Supplemental coverage for prescriptions, dental care, paramedical services and more — helps reduce out-of-pocket healthcare costs.
-                </p>
-            </div>
-
-            <div>
-                <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Visitors Insurance</h2>
-                <p class="mt-2 text-gray-600 dark:text-gray-300">
-                    Short-term medical coverage for visitors to Canada. Covers emergency care, hospital stays and unexpected medical expenses while visiting.
-                </p>
-            </div>
-        </section>
-
-        <section class="mt-12 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-            <h3 class="text-lg font-medium text-gray-900 dark:text-white text-center">Request a Quote or Ask a Question</h3>
-
-            <form id="insuranceForm" class="mt-6 space-y-4" action="https://api.web3forms.com/submit" method="POST">
-                <input type="hidden" name="access_key" value="59d76ed4-1662-4a6d-afa8-cd95e167efc2">
-                <input type="hidden" name="subject" value="Insurance Inquiry">
-                <input type="hidden" name="from_name" value="Website Visitor">
-                <input type="hidden" name="redirect" value="thank-you.html">
-                <!-- Honeypot -->
-                <input type="checkbox" name="botcheck" class="hidden" style="display:none">
-
-                <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
-                    <div class="mt-1">
-                        <input type="text" name="name" id="name" required class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                    </div>
+                <div class="hidden sm:flex sm:space-x-8">
+                    <a href="index.html#about" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 font-medium">About</a>
+                    <a href="index.html#services" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 font-medium">Services</a>
+                    <a href="join-my-team.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 font-medium">Careers</a>
+                    <a href="blog.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 font-medium">Blog</a>
+                    <a href="contact.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 font-medium">Contact</a>
                 </div>
 
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
-                    <div class="mt-1">
-                        <input type="email" name="email" id="email" required class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                    </div>
+                <div class="hidden sm:flex sm:items-center">
+                    <a href="tel:4168300762" class="inline-flex items-center bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md text-sm font-medium">
+                        <i class="fas fa-phone-alt mr-2"></i>416-830-0762
+                    </a>
                 </div>
 
-                <div>
-                    <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Phone</label>
-                    <div class="mt-1">
-                        <input type="text" name="phone" id="phone" class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                    </div>
-                </div>
-
-                <div>
-                    <label for="inquiry" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Inquiry Type</label>
-                    <div class="mt-1">
-                        <select id="inquiry" name="inquiry" required class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                            <option value="">Select an option</option>
-                            <option value="Life Insurance">Life Insurance</option>
-                            <option value="Critical Illness">Critical Illness</option>
-                            <option value="Disability Coverage">Disability Coverage</option>
-                            <option value="Health & Dental">Health & Dental</option>
-                            <option value="Visitors Insurance">Visitors Insurance</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div>
-                    <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
-                    <div class="mt-1">
-                        <textarea id="message" name="message" rows="4" class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Tell us a little about your needs (optional)"></textarea>
-                    </div>
-                </div>
-
-                <div>
-                    <button type="submit" class="w-full bg-primary-600 hover:bg-primary-700 text-white px-4 py-3 rounded-md text-base font-medium transition-all">
-                        Submit Inquiry
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars h-6 w-6"></i>
                     </button>
                 </div>
-            </form>
-        </section>
-    </main>
+            </div>
+        </div>
 
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden sm:hidden">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="index.html#about" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200">About</a>
+                <a href="index.html#services" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200">Services</a>
+                <a href="join-my-team.html" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200">Careers</a>
+                <a href="blog.html" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200">Blog</a>
+                <a href="contact.html" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Wrap page content under the sticky nav to use same theme as index.html -->
+    <div class="content-layer">
+        <!-- main content (existing) -->
+        <main class="max-w-3xl mx-auto px-4 py-16">
+            <h1 class="text-4xl font-extrabold text-primary-600 dark:text-primary-400 text-center">Insurance Protection</h1>
+            <p class="mt-4 text-lg text-gray-700 dark:text-gray-300 text-center">
+                Practical protection and financial education to help you and your family stay secure through life’s changes.
+            </p>
+
+            <section class="mt-8 space-y-6">
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Life Insurance</h2>
+                    <p class="mt-2 text-gray-600 dark:text-gray-300">
+                        Provides a financial safety net for your loved ones in the event of death. Options include term and permanent policies tailored to your family's needs and budget.
+                    </p>
+                </div>
+
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Critical Illness Insurance</h2>
+                    <p class="mt-2 text-gray-600 dark:text-gray-300">
+                        One-time lump-sum benefit if you're diagnosed with a covered critical illness. Designed to cover medical expenses, mortgage or living costs while you recover.
+                    </p>
+                </div>
+
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Disability Coverage</h2>
+                    <p class="mt-2 text-gray-600 dark:text-gray-300">
+                        Income protection if you become unable to work due to injury or illness. Keeps bills paid and preserves long-term financial plans.
+                    </p>
+                </div>
+
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Health &amp; Dental Plans</h2>
+                    <p class="mt-2 text-gray-600 dark:text-gray-300">
+                        Supplemental coverage for prescriptions, dental care, paramedical services and more — helps reduce out-of-pocket healthcare costs.
+                    </p>
+                </div>
+
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Visitors Insurance</h2>
+                    <p class="mt-2 text-gray-600 dark:text-gray-300">
+                        Short-term medical coverage for visitors to Canada. Covers emergency care, hospital stays and unexpected medical expenses while visiting.
+                    </p>
+                </div>
+            </section>
+
+            <section class="mt-12 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white text-center">Request a Quote or Ask a Question</h3>
+
+                <form id="insuranceForm" class="mt-6 space-y-4" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="59d76ed4-1662-4a6d-afa8-cd95e167efc2">
+                    <input type="hidden" name="subject" value="Insurance Inquiry">
+                    <input type="hidden" name="from_name" value="Website Visitor">
+                    <input type="hidden" name="redirect" value="thank-you.html">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display:none">
+
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+                        <div class="mt-1">
+                            <input type="text" name="name" id="name" required class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+                        <div class="mt-1">
+                            <input type="email" name="email" id="email" required class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Phone</label>
+                        <div class="mt-1">
+                            <input type="text" name="phone" id="phone" class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="inquiry" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Inquiry Type</label>
+                        <div class="mt-1">
+                            <select id="inquiry" name="inquiry" required class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                <option value="">Select an option</option>
+                                <option value="Life Insurance">Life Insurance</option>
+                                <option value="Critical Illness">Critical Illness</option>
+                                <option value="Disability Coverage">Disability Coverage</option>
+                                <option value="Health &amp; Dental">Health &amp; Dental</option>
+                                <option value="Visitors Insurance">Visitors Insurance</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
+                        <div class="mt-1">
+                            <textarea id="message" name="message" rows="4" class="py-3 px-4 block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Tell us a little about your needs (optional)"></textarea>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="w-full bg-primary-600 hover:bg-primary-700 text-white px-4 py-3 rounded-md text-base font-medium transition-all">
+                            Submit Inquiry
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <!-- Footer (same theme) -->
+        <footer class="bg-gray-800 text-white">
+            <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-base text-gray-400">
+                    &copy; 2025 Malik Bachlani, Financial Advisor with World Financial Group. All rights reserved.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts: mobile menu, smooth scroll, dark mode -->
     <script>
-        // Dark mode toggle (system preference)
+        // Mobile menu toggle
+        const mobileButton = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        if (mobileButton && menu) {
+            mobileButton.addEventListener('click', () => menu.classList.toggle('hidden'));
+        }
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Dark mode: apply system or saved preference
         if (localStorage.getItem('color-theme') === 'dark' || (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
