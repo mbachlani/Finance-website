@@ -55,14 +55,18 @@
     <nav class="site-nav bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
-                <a href="index.html" class="text-xl font-bold text-primary-600">Malik Bachlani</a>
+                <!-- moved logo + menu to the left -->
+                <div class="flex items-center space-x-8">
+                    <a href="index.html" class="text-xl font-bold text-primary-600">Malik Bachlani</a>
 
-                <div class="hidden sm:flex sm:space-x-8">
-                    <a href="index.html#about" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 font-medium">About</a>
-                    <a href="index.html#services" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 font-medium">Services</a>
-                    <a href="join-my-team.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 font-medium">Careers</a>
-                    <a href="blog.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 font-medium">Blog</a>
-                    <a href="contact.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 font-medium">Contact</a>
+                    <div class="hidden sm:flex sm:space-x-4">
+                        <a href="index.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 font-medium">Home</a>
+                        <a href="index.html#about" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 font-medium">About</a>
+                        <a href="index.html#services" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 font-medium">Services</a>
+                        <a href="join-my-team.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 font-medium">Careers</a>
+                        <a href="blog.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 font-medium">Blog</a>
+                        <a href="contact.html" class="nav-link text-gray-700 dark:text-gray-200 hover:text-primary-600 font-medium">Contact</a>
+                    </div>
                 </div>
 
                 <div class="hidden sm:flex sm:items-center">
@@ -80,9 +84,10 @@
             </div>
         </div>
 
-        <!-- Mobile menu -->
+        <!-- Mobile menu (added Home) -->
         <div id="mobile-menu" class="hidden sm:hidden">
             <div class="pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200">Home</a>
                 <a href="index.html#about" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200">About</a>
                 <a href="index.html#services" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200">Services</a>
                 <a href="join-my-team.html" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200">Careers</a>
