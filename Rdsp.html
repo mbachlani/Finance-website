@@ -48,6 +48,12 @@
         .video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; margin-top: 1rem; }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 0.5rem; box-shadow: 0 6px 18px rgba(0,0,0,0.1); }
 
+        /* Modal styles */
+        .video-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 60; align-items: center; justify-content: center; padding: 1rem; }
+        .video-modal.open { display: flex; }
+        .video-modal .modal-content { width: 100%; max-width: 960px; background: transparent; position: relative; border-radius: 8px; }
+        .video-modal .close-btn { position: absolute; top: -18px; right: -18px; background:#111827; color:#fff; width:40px; height:40px; border-radius:9999px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 16px rgba(0,0,0,0.4); border: none; }
+
         .article-content p { margin-bottom: 1rem; line-height: 1.7; }
         .article-content h2 { font-size: 1.5rem; font-weight: 700; margin-top: 1.25rem; color: #0c4a6e; }
         .article-content ul { list-style: disc; margin-left: 1.25rem; }
@@ -114,29 +120,19 @@
         <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <article class="article-content bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
                 <div class="mb-6">
-                    <!-- Local image with a reliable onerror fallback to Unsplash -->
                     <img
-                        src="mentally disturbed.jpg"
+                        src="son-with-autism-with-mom.jpg"
+                        
                         alt="Parent and child"
                         class="w-full h-64 object-cover rounded-lg shadow-sm"
-                        
                     />
                 </div>
 
-                <!-- Embedded YouTube video -->
-                <div class="video-wrapper">
-                    <iframe
-                        src="https://www.youtube.com/embed/WTTCR5-YuAU?list=PLWm5OLrc2J_Sa-GuU2_LkprMfO7I9Nk6n&index=3"
-                        title="RDSP Video"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
+                <div class="my-4 text-center">
+                    <button id="open-video" type="button" class="inline-flex items-center px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-md focus:outline-none">
+                        <i class="fab fa-youtube mr-2"></i> Watch RDSP Video
+                    </button>
                 </div>
-+                <div class="my-4 text-center">
-+                    <a href="https://www.youtube.com/watch?v=WTTCR5-YuAU&list=PLWm5OLrc2J_Sa-GuU2_LkprMfO7I9Nk6n&index=3" target="_blank" class="text-primary-600 hover:underline">
-+                        Watch on YouTube
-+                    </a>
-+                </div>
 
                 <p>
                     The Registered Disability Savings Plan (RDSP) is one of the most powerful yet underutilized financial tools available in Canada. Nearly one million eligible Canadians haven’t opened an RDSP, missing out on thousands of dollars in free government contributions and the chance to build lifelong financial security for themselves or their loved ones with disabilities.
@@ -187,6 +183,23 @@
             </article>
         </main>
 
+        <!-- Video modal -->
+        <div id="video-modal" class="video-modal" role="dialog" aria-hidden="true" aria-label="RDSP video">
+            <div class="modal-content">
+                <button id="close-video" class="close-btn" aria-label="Close video">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 8.586L4.293 2.879A1 1 0 102.879 4.293L8.586 10l-5.707 5.707a1 1 0 101.414 1.414L10 11.414l5.707 5.707a1 1 0 001.414-1.414L11.414 10l5.707-5.707a1 1 0 10-1.414-1.414L10 8.586z" clip-rule="evenodd"/></svg>
+                </button>
+                <div class="video-wrapper">
+                    <iframe id="video-iframe"
+                            src=""
+                            title="RDSP Video"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
         <footer class="bg-gray-800 text-white">
             <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
                 <p class="text-base text-gray-400">
@@ -208,6 +221,36 @@
         } else {
             document.documentElement.classList.remove('dark');
         }
+
+        // Video modal logic
+        (function() {
+            const openBtn = document.getElementById('open-video');
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('video-iframe');
+            const closeBtn = document.getElementById('close-video');
+            const embedBase = 'https://www.youtube.com/embed/WTTCR5-YuAU?rel=0';
+
+            function openModal() {
+                iframe.src = embedBase + '&autoplay=1';
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                closeBtn && closeBtn.focus();
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                modal.setAttribute('aria-hidden', 'true');
+                iframe.src = '';
+                document.body.style.overflow = '';
+                openBtn && openBtn.focus();
+            }
+
+            openBtn && openBtn.addEventListener('click', openModal);
+            closeBtn && closeBtn.addEventListener('click', closeModal);
+            modal && modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+        })();
     </script>
 </body>
 </html>
