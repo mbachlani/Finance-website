@@ -21,19 +21,36 @@ html,body{
 }
 
 /* Hero */
-.hero, .hero-gradient {
+@media (max-width: 768px) {
+    .hero, .hero-gradient {
   color:#fff;
   text-align:center;
-  padding:80px 1rem;
+  padding: 40px 1rem;
+    font-size: 1rem;
   background-size:cover;
   background-position:center;
   display:block;
 }
+}
+
+
+
 
 /* Sections */
 .section, .content-section {
-  padding:60px 1rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
 }
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+
 
 /* Cards */
 .card, .card-hover {
