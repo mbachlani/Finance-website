@@ -982,6 +982,39 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 </script>
+<script>
+  // Safe mobile/menu + layout init (replace duplicate listeners and missing function)
+  (function () {
+    const mobileButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    // Define adjustLayout (simple: show/hide mobile menu on resize)
+    window.adjustLayout = function adjustLayout() {
+      if (window.innerWidth >= 1024) {
+        mobileMenu && mobileMenu.classList.add('hidden');
+        // ensure any custom "show" state is removed
+        mobileMenu && mobileMenu.classList.remove('show');
+      }
+    };
+
+    // Init once
+    adjustLayout();
+    window.addEventListener('resize', adjustLayout);
+
+    // Single mobile toggle
+    if (mobileButton && mobileMenu) {
+      mobileButton.addEventListener('click', function () {
+        mobileMenu.classList.toggle('hidden');
+        // keep optional "show" class removed to avoid conflicts
+        mobileMenu.classList.remove('show');
+      });
+    }
+
+    // Optional: make active-link script target anchors with id targets or add `.nav-link` to your markup.
+    // If you prefer to keep current markup, change selector used by active highlighting to:
+    // document.querySelectorAll('a[href^="#"]')
+  })();
+</script>
 
 </body>
 </html>
