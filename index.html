@@ -957,15 +957,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const mobileMenu = document.getElementById("mobile-menu");
   const mobileButton = document.getElementById("mobile-menu-button");
 
-  // Detect device width and apply mobile class
-  function adjustLayout() {
-    if (window.innerWidth <= 1024) {
-      html.classList.add("mobile-view");
-    } else {
-      html.classList.remove("mobile-view");
-      mobileMenu.classList.add("hidden"); // ensure menu hides again
-    }
-  }
+ 
 
   // Run once and on window resize
   adjustLayout();
@@ -978,6 +970,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+
 <script>
   // Enhanced mobile menu toggle (nav overlay)
   const mobileButton = document.getElementById("mobile-menu-button");
@@ -989,5 +982,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 </script>
+
 </body>
 </html>
