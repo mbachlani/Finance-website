@@ -52,6 +52,9 @@
         /* keep mobile menu overlay behavior in sync with styles.css */
         #mobile-menu { display: none; }
         #mobile-menu.show { display: block; }
+
++       /* Ensure accidental overlay doesn't cover nav */
++       .overlay { display: none !important; }
     </style>
 
    
@@ -65,36 +68,66 @@
     
         <!-- Navigation -->
 <nav class="site-nav bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-16">
-      <div class="flex items-center">
-        <a href="index.html" class="text-xl font-bold text-primary-600">Malik Bachlani</a>
-        <div class="hidden lg:flex lg:space-x-8 ml-10">
-          <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Home</a>
-          <a href="index.html#about" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">About</a>
-          <a href="index.html#services" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Services</a>
-          <a href="Blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Education Hub</a>
-          <a href="join-my-team.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Join My Team</a>
-          <a href="index.html#contact" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Contact</a>
-        </div>
-      </div>
-
-      <!-- Desktop Phone Button -->
-      <div class="hidden lg:flex items-center">
-        <button type="button" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all">
-          <i class="fas fa-phone-alt mr-2"></i> 416-830-0762
-        </button>
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <div class="flex lg:hidden items-center">
-        <button type="button" id="mobile-menu-button" class="p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500" aria-expanded="false" aria-controls="mobile-menu">
-          <span class="sr-only">Open main menu</span>
-          <i class="fas fa-bars h-6 w-6"></i>
-        </button>
-      </div>
-    </div>
-  </div>
+-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+-    <div class="flex justify-between h-16">
+-      <div class="flex items-center">
+-        <a href="index.html" class="text-xl font-bold text-primary-600">Malik Bachlani</a>
+-        <div class="hidden lg:flex lg:space-x-8 ml-10">
+-          <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Home</a>
+-          <a href="index.html#about" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">About</a>
+-          <a href="index.html#services" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Services</a>
+-          <a href="Blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Education Hub</a>
+-          <a href="join-my-team.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Join My Team</a>
+-          <a href="index.html#contact" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Contact</a>
+-        </div>
+-      </div>
+-
+-      <!-- Desktop Phone Button -->
+-      <div class="hidden lg:flex items-center">
+-        <button type="button" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-all">
+-          <i class="fas fa-phone-alt mr-2"></i> 416-830-0762
+-        </button>
+-      </div>
+-
+-      <!-- Mobile Menu Button -->
+-      <div class="flex lg:hidden items-center">
+-        <button type="button" id="mobile-menu-button" class="p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500" aria-expanded="false" aria-controls="mobile-menu">
+-          <span class="sr-only">Open main menu</span>
+-          <i class="fas fa-bars h-6 w-6"></i>
+-        </button>
+-      </div>
+-    </div>
+-  </div>
++  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
++    <div class="flex items-center justify-between h-16">
++      <!-- Left: Brand + Desktop Links -->
++      <div class="flex items-center space-x-6">
++        <a href="index.html" class="text-xl font-bold text-primary-600 z-50">Malik Bachlani</a>
++        <div class="hidden lg:flex lg:space-x-8">
++          <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Home</a>
++          <a href="index.html#about" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">About</a>
++          <a href="index.html#services" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Services</a>
++          <a href="Blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Education Hub</a>
++          <a href="join-my-team.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Join My Team</a>
++          <a href="index.html#contact" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Contact</a>
++        </div>
++      </div>
++
++      <!-- Right: Phone (visible) + Mobile Toggle -->
++      <div class="flex items-center space-x-3">
++        <!-- Phone always visible; on very small screens it will shrink naturally -->
++        <a href="tel:4168300762" class="inline-flex items-center bg-primary-600 hover:bg-primary-700 text-white px-3 py-2 rounded-md text-sm font-medium transition-all">
++          <i class="fas fa-phone-alt mr-2"></i> 416-830-0762
++        </a>
++
++        <!-- Mobile Menu Button -->
++        <button type="button" id="mobile-menu-button" class="p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none lg:hidden" aria-expanded="false" aria-controls="mobile-menu">
++          <span class="sr-only">Open main menu</span>
++          <i class="fas fa-bars h-6 w-6"></i>
++        </button>
++      </div>
++    </div>
++  </div>
 
   <!-- Mobile Menu (hidden by default, shown by adding .show) -->
   <div id="mobile-menu" class="hidden lg:hidden" aria-hidden="true">
