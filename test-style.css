@@ -21,7 +21,7 @@ body {
     background: var(--gray-50);
 }
 
-/* Header & Navigation */
+/* Header & Navigation Base */
 .header-container {
     max-width: 80rem;
     margin: 0 auto;
@@ -31,14 +31,17 @@ body {
     align-items: center;
     justify-content: space-between;
     background: white;
+    position: relative;
 }
 
 .logo {
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--primary-600);
+    z-index: 51;
 }
 
+/* Desktop Navigation */
 nav {
     display: flex;
     gap: 2rem;
@@ -47,6 +50,7 @@ nav {
 nav a {
     color: var(--gray-800);
     text-decoration: none;
+    font-weight: 500;
     transition: color 0.2s;
 }
 
@@ -54,25 +58,31 @@ nav a:hover {
     color: var(--primary-600);
 }
 
-/* Mobile Menu */
+/* Hamburger Menu */
 .hamburger {
+    width: 40px;
+    height: 40px;
     display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    width: 2.5rem;
-    height: 2.5rem;
-    padding: 0.5rem;
-    border-radius: 0.375rem;
+    z-index: 51;
+    padding: 8px;
+    background: transparent;
+    border-radius: 4px;
 }
 
 .hamburger span {
     display: block;
-    width: 100%;
+    width: 24px;
     height: 2px;
-    background: var(--gray-800);
-    margin: 4px 0;
+    background-color: #1f2937;
+    margin: 2px 0;
     transition: 0.3s;
 }
 
+/* Overlay for Mobile Menu */
 .overlay {
     display: none;
     position: fixed;
@@ -195,26 +205,27 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
+    /* Show hamburger on mobile */
     .hamburger {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
     }
 
+    /* Hide desktop nav by default on mobile */
     nav {
         position: fixed;
-        top: 4rem;
+        top: 0;
         right: -100%;
         width: 80%;
         max-width: 20rem;
-        height: calc(100vh - 4rem);
+        height: 100vh;
         background: white;
         flex-direction: column;
-        padding: 2rem;
-        transition: right 0.3s;
+        padding: 5rem 2rem 2rem;
+        transition: right 0.3s ease;
         z-index: 50;
     }
 
+    /* When nav is active */
     nav.active {
         right: 0;
     }
@@ -223,6 +234,7 @@ footer {
         display: block;
     }
 
+    /* Hamburger animation */
     .hamburger.active span:nth-child(1) {
         transform: translateY(6px) rotate(45deg);
     }
@@ -233,5 +245,23 @@ footer {
 
     .hamburger.active span:nth-child(3) {
         transform: translateY(-6px) rotate(-45deg);
+    }
+}
+
+/* Desktop Only Styles */
+@media (min-width: 1025px) {
+    nav {
+        display: flex;
+        position: static;
+        width: auto;
+        height: auto;
+        padding: 0;
+        background: transparent;
+    }
+
+    /* Hide mobile elements on desktop */
+    .hamburger,
+    .overlay {
+        display: none;
     }
 }
