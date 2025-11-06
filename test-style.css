@@ -45,6 +45,7 @@ body {
 nav {
     display: flex;
     gap: 2rem;
+    align-items: center;
 }
 
 nav a {
@@ -52,6 +53,8 @@ nav a {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s;
+    display: inline-block; /* Ensure links are always visible */
+    padding: 0.5rem 1rem;
 }
 
 nav a:hover {
@@ -210,7 +213,7 @@ footer {
         display: flex;
     }
 
-    /* Hide desktop nav by default on mobile */
+    /* Mobile nav styles */
     nav {
         position: fixed;
         top: 0;
@@ -223,6 +226,11 @@ footer {
         padding: 5rem 2rem 2rem;
         transition: right 0.3s ease;
         z-index: 50;
+    }
+
+    nav a {
+        width: 100%;
+        padding: 0.75rem 1rem;
     }
 
     /* When nav is active */
@@ -251,12 +259,17 @@ footer {
 /* Desktop Only Styles */
 @media (min-width: 1025px) {
     nav {
-        display: flex;
+        display: flex !important; /* Force display on desktop */
         position: static;
         width: auto;
         height: auto;
         padding: 0;
         background: transparent;
+        flex-direction: row;
+    }
+
+    nav a {
+        padding: 0.5rem 1rem;
     }
 
     /* Hide mobile elements on desktop */
