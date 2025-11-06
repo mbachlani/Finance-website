@@ -1,30 +1,39 @@
+// Central site scripts: mobile menu, smooth scroll, active nav, dark mode, video modal
 document.addEventListener('DOMContentLoaded', function () {
   // Mobile menu
-  const mobileBtn = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileBtn = document.getElementById('mobile-menu-button') || document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu') || document.getElementById('nav');
+  const overlay = document.getElementById('overlay');
+
   function closeMenu() {
     if (!mobileMenu) return;
+    mobileMenu.classList.remove('active', 'show');
     mobileMenu.classList.add('hidden');
-    mobileMenu.classList.remove('show');
     mobileMenu.setAttribute('aria-hidden', 'true');
-    mobileBtn && mobileBtn.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('overflow-hidden-mobile');
+    if (mobileBtn) mobileBtn.setAttribute('aria-expanded', 'false');
+    if (overlay) overlay.classList.remove('active');
+    document.body.style.overflow = '';
   }
   function openMenu() {
     if (!mobileMenu) return;
+    mobileMenu.classList.add('active', 'show');
     mobileMenu.classList.remove('hidden');
-    mobileMenu.classList.add('show');
     mobileMenu.setAttribute('aria-hidden', 'false');
-    mobileBtn && mobileBtn.setAttribute('aria-expanded', 'true');
-    document.body.classList.add('overflow-hidden-mobile');
+    if (mobileBtn) mobileBtn.setAttribute('aria-expanded', 'true');
+    if (overlay) overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
   }
+
   if (mobileMenu) {
     mobileMenu.classList.add('hidden');
     mobileMenu.setAttribute('aria-hidden', 'true');
   }
+
   if (mobileBtn && mobileMenu) {
     mobileBtn.addEventListener('click', () => (mobileMenu.classList.contains('show') ? closeMenu() : openMenu()));
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    // close when a link inside the menu is clicked
+    mobileMenu.querySelectorAll && mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    if (overlay) overlay.addEventListener('click', closeMenu);
     window.addEventListener('resize', () => { if (window.innerWidth >= 1024) closeMenu(); });
   }
 
@@ -42,44 +51,42 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Active link highlight (simple)
-  const sections = Array.from(document.querySelectorAll('section, [id]')).filter(s => s.id);
-  const navLinks = document.querySelectorAll('nav a');
+  const sections = Array.from(document.querySelectorAll('section[id], [id]')).filter(s => s.id);
+  const navLinks = Array.from(document.querySelectorAll('nav a, .nav-link, a[href^="#"]'));
   function highlight() {
     let current = '';
     sections.forEach(sec => { if (pageYOffset >= sec.offsetTop - 150) current = sec.id; });
-    navLinks.forEach(link => {
-      link.classList.toggle('active-nav', link.getAttribute('href') === `#${current}`);
-    });
+    navLinks.forEach(link => link.classList.toggle('active-nav', link.getAttribute('href') === `#${current}`));
   }
   window.addEventListener('scroll', highlight);
   highlight();
 
-  // Dark mode toggle (creates floating button)
+  // Dark mode toggle and initial state
   (function () {
     const saved = localStorage.getItem('color-theme');
-    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (saved === 'dark' || (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
-    let toggle = document.getElementById('dark-mode-toggle');
-    if (!toggle) {
-      toggle = document.createElement('button');
+    // create a floating toggle if not present
+    if (!document.getElementById('dark-mode-toggle')) {
+      const toggle = document.createElement('button');
       toggle.id = 'dark-mode-toggle';
-      toggle.className = 'fixed bottom-4 right-4 bg-gray-800 text-white p-3 rounded-full shadow-lg hover:bg-gray-700 transition-all z-50';
+      toggle.className = 'dark-toggle fixed bottom-4 right-4 z-50';
       toggle.title = 'Toggle dark mode';
       document.body.appendChild(toggle);
+      function update() { toggle.innerHTML = document.documentElement.classList.contains('dark') ? '🌞' : '🌙'; }
+      toggle.addEventListener('click', () => {
+        if (document.documentElement.classList.contains('dark')) {
+          document.documentElement.classList.remove('dark'); localStorage.setItem('color-theme', 'light');
+        } else {
+          document.documentElement.classList.add('dark'); localStorage.setItem('color-theme', 'dark');
+        }
+        update();
+      });
+      update();
     }
-    function updateIcon() { toggle.innerHTML = document.documentElement.classList.contains('dark') ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>'; }
-    toggle.addEventListener('click', function () {
-      if (document.documentElement.classList.contains('dark')) {
-        document.documentElement.classList.remove('dark'); localStorage.setItem('color-theme', 'light');
-      } else {
-        document.documentElement.classList.add('dark'); localStorage.setItem('color-theme', 'dark');
-      }
-      updateIcon();
-    });
-    updateIcon();
   })();
 
   // Video modal (if present)
