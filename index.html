@@ -54,6 +54,49 @@
 
     /* Ensure accidental overlay doesn't cover nav */
        .overlay { display: none !important; }
+
+        /* Sticky nav and hamburger positioning */
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+        }
+        
+        /* Mobile menu button positioning */
+        #mobile-menu-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 60;
+        }
+
+        /* Mobile menu overlay */
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 64px; /* Height of nav header */
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        #mobile-menu.show {
+            display: block;
+        }
+
+        /* Push main content down when nav is fixed */
+        body {
+            padding-top: 64px;
+        }
+
+        @media (min-width: 1024px) {
+            #mobile-menu-button {
+                display: none;
+            }
+        }
     </style>
 
    
@@ -66,52 +109,51 @@
 
     
         <!-- Navigation -->
-<nav class="site-nav bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      <!-- Left: Brand + Desktop Links -->
-      <div class="flex items-center space-x-6">
-        <a href="index.html" class="text-xl font-bold text-primary-600">Malik Bachlani</a>
-        <div class="hidden lg:flex lg:space-x-8">
-          <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Home</a>
-          <a href="index.html#about" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">About</a>
-          <a href="index.html#services" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Services</a>
-          <a href="Blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Education Hub</a>
-          <a href="join-my-team.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Join My Team</a>
-          <a href="index.html#contact" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Contact</a>
+<nav class="site-nav bg-white dark:bg-gray-800 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <!-- Logo -->
+            <a href="index.html" class="text-xl font-bold text-primary-600">Malik Bachlani</a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex lg:items-center lg:space-x-8">
+                <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Home</a>
+                <a href="index.html#about" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">About</a>
+                <a href="index.html#services" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Services</a>
+                <a href="Blog.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Education Hub</a>
+                <a href="join-my-team.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Join My Team</a>
+                <a href="index.html#contact" class="text-gray-600 dark:text-gray-300 hover:text-primary-600">Contact</a>
+            </div>
+
+            <!-- Phone (Desktop Only) -->
+            <a href="tel:4168300762" class="hidden lg:inline-flex items-center bg-primary-600 hover:bg-primary-700 text-white px-3 py-2 rounded-md text-sm font-medium">
+                <i class="fas fa-phone-alt mr-2"></i> 416-830-0762
+            </a>
         </div>
-      </div>
-
-      <!-- Right: Phone + Mobile Menu Button -->
-      <div class="flex items-center space-x-3">
-        <a href="tel:4168300762" class="hidden lg:inline-flex items-center bg-primary-600 hover:bg-primary-700 text-white px-3 py-2 rounded-md text-sm font-medium transition-all">
-          <i class="fas fa-phone-alt mr-2"></i> 416-830-0762
-        </a>
-
-        <button id="mobile-menu-button" type="button" class="p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 lg:hidden" aria-expanded="false" aria-controls="mobile-menu">
-          <span class="sr-only">Open main menu</span>
-          <i class="fas fa-bars h-6 w-6"></i>
-        </button>
-      </div>
     </div>
-  </div>
 
-  <!-- Mobile Menu (hidden by default) -->
-  <div id="mobile-menu" class="lg:hidden" aria-hidden="true">
-    <div class="pt-2 pb-3 space-y-1 bg-white dark:bg-gray-800 shadow-md">
-      <a href="index.html" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600">Home</a>
-      <a href="index.html#about" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600">About</a>
-      <a href="index.html#services" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600">Services</a>
-      <a href="Blog.html" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600">Education Hub</a>
-      <a href="join-my-team.html" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600">Join My Team</a>
-      <a href="index.html#contact" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600">Contact</a>
-      <div class="mt-4 pl-3 pr-4">
-        <a href="tel:4168300762" class="w-full inline-flex items-center justify-center bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md text-base font-medium">
-          <i class="fas fa-phone-alt mr-2"></i> Call
-        </a>
-      </div>
+    <!-- Hamburger Button -->
+    <button id="mobile-menu-button" class="lg:hidden p-2 rounded-md bg-white dark:bg-gray-800 text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <i class="fas fa-bars h-6 w-6"></i>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="lg:hidden" aria-hidden="true">
+        <div class="py-2 space-y-1">
+            <a href="index.html" class="block px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600">Home</a>
+            <a href="index.html#about" class="block px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600">About</a>
+            <a href="index.html#services" class="block px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600">Services</a>
+            <a href="Blog.html" class="block px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600">Education Hub</a>
+            <a href="join-my-team.html" class="block px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600">Join My Team</a>
+            <a href="index.html#contact" class="block px-4 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600">Contact</a>
+            <div class="px-4 py-2">
+                <a href="tel:4168300762" class="w-full inline-flex items-center justify-center bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-phone-alt mr-2"></i> Call
+                </a>
+            </div>
+        </div>
     </div>
-  </div>
 </nav>
 
 <!-- Hero Section -->
