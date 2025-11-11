@@ -62,6 +62,7 @@ nav a:hover {
 }
 
 /* Hamburger Menu */
+#mobile-menu-button,
 .hamburger {
     width: 40px;
     height: 40px;
@@ -74,6 +75,7 @@ nav a:hover {
     padding: 8px;
     background: transparent;
     border-radius: 4px;
+    color: #0284c7; /* Tailwind primary-600 */
 }
 
 .hamburger span {
@@ -81,8 +83,16 @@ nav a:hover {
     width: 24px;
     height: 2px;
     background-color: #1f2937;
+    background: #0284c7; /* replace previous white */
     margin: 2px 0;
     transition: 0.3s;
+}
+
+#mobile-menu-button i,
+#mobile-menu-button svg {
+    color: inherit;
+    fill: currentColor;
+    stroke: currentColor;
 }
 
 /* Overlay for Mobile Menu */
